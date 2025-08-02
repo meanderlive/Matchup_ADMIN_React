@@ -1,0 +1,37 @@
+//
+// Custom
+//
+
+@use 'sass:map';
+
+.scroll-margin {
+	scroll-margin-top: map.get($header, height) + map.get($subheader, height) +
+		map.get($page, padding-y);
+}
+
+.sticky-top-size {
+	top: map.get($header, height) + map.get($subheader, height) + map.get($page, padding-y);
+}
+
+.border-transparent {
+	--#{$prefix}border-opacity: 0;
+}
+
+.user-modal-body form {
+
+
+	height: 80vh !important;
+
+}
+.modal-content{
+overflow: auto;
+}
+.rounded-circle10px {
+    border-radius: 10% !important;
+}
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #6c5dd3; 
+     border-color: #6c5dd3; 
+}

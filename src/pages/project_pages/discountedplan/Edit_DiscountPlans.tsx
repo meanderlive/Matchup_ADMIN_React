@@ -1,0 +1,416 @@
+import React, { FC, ReactElement, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { FormikHelpers, useFormik } from 'formik';
+import dayjs from 'dayjs';
+import * as Yup from 'yup';
+
+import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment';
+import Modal, {
+	ModalBody,
+	ModalFooter,
+	ModalHeader,
+	ModalTitle,
+} from '../../../components/bootstrap/Modal';
+import data from '../../../common/data/dummyCustomerData';
+import showNotification from '../../../components/extras/showNotification';
+import Icon from '../../../components/icon/Icon';
+import FormGroup from '../../../components/bootstrap/forms/FormGroup';
+import Input from '../../../components/bootstrap/forms/Input';
+import Card, {
+	CardBody,
+	CardHeader,
+	CardLabel,
+	CardTitle,
+} from '../../../components/bootstrap/Card';
+import Button from '../../../components/bootstrap/Button';
+import Label from '../../../components/bootstrap/forms/Label';
+import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
+import PAYMENTS from '../../../common/data/enumPaymentMethod';
+import { createUser, fetchUser, fetchupdateUser } from '../../../redux/Slice/UserManagement_slice';
+import img from '../../../assets/img/user6.png';
+import { createProfile } from '../../../redux/Api/UserManagement';
+import { getColorNameWithIndex } from '../../../common/data/enumColors';
+import { getFirstLetter } from '../../../helpers/helpers';
+import useDarkMode from '../../../hooks/useDarkMode';
+import { getAllInterest } from '../../../redux/Slice/IntersetSlice';
+import { getAll_Disconutplan, update_Disconutplan } from '../../../redux/Slice/DiscountPlans_Slice';
+
+interface ICustomerEditModalProps {
+	editId: any;
+	editData: any;
+	id: string;
+	isOpen: boolean;
+	setIsOpen(...args: unknown[]): unknown;
+}
+const EditUser: FC<ICustomerEditModalProps> = ({ id, isOpen, editId, editData, setIsOpen }) => {
+	const { darkModeStatus } = useDarkMode();
+	const itemData = id ? data.filter((item) => item.id.toString() === id.toString()) : {};
+	const item = id && Array.isArray(itemData) ? itemData[0] : {};
+	const dispatch = useDispatch();
+	//    const [modeId,setModeid]=useState<any>('')
+	const modeid = localStorage.getItem('modeid');
+	//    setModeid(localStorage.getItem('modeid'))
+	const [intersetArray, setIntersetArray] = useState<any>(editData?.interest)
+	const [errorHandling, setErrorHandling] = useState(false); 
+	//    yup
+	const [avatarFil, setAvatarFile] = useState<any>(null);
+	const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+	const store = useSelector((statee: any) => statee);
+	const role = store.role.roles.data ? store.role.roles.data : []
+	const Service_Data = Array.isArray(store?.Service?.services?.data?.data)
+  ? store.Service.services.data?.data
+  : [];
+	const stateinterest = useSelector((statee: any) => statee.interest)
+
+	const dataa: any = stateinterest.interset.data
+	// useEffect(() => {
+	// 	dispatch(getAllInterest(modeid) as any)
+	// }, [dispatch, modeid])
+	// const handleActiveInteset = (idd: any) => {
+	// 	const data2 = intersetArray.includes(idd)
+	// 	if (data2) {
+	// 		const updatedArray = intersetArray.filter((itema: any) => itema !== idd);
+	// 		setIntersetArray(updatedArray);
+	// 	} else {
+	// 		setIntersetArray([...intersetArray, idd])
+
+	// 	}
+	// }
+
+	const heightArray = [];
+	for (let i = 3; i <= 6.6; i += 0.1) {
+		heightArray.push(parseFloat(i.toFixed(1)));
+	}
+
+	const WeightArray = [];
+
+	for (let i = 20; i < 120; i += 1) {
+		WeightArray.push(i);
+	}
+
+	const NumberofSiblingsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+	const userValidation = Yup.object().shape({
+		title: Yup.string().required("title is required"),
+		description: Yup.string().required("Email is required"),
+	});
+
+	const formik = useFormik({
+		initialValues: {
+			title: editData?.title || '',
+			display_name: editData?.display_name || '',
+			description: editData?.description || '',
+			price:editData?.price|| '',
+			note: editData?.note || '',
+			admin_note: editData?.admin_note || '',
+			service: editData?.service || '',
+			image: editData?.image || '',
+			is_activated: editData?.is_activated ?? true, // Ensure boolean
+		},
+
+		enableReinitialize: true,
+		validationSchema: userValidation,
+
+		onSubmit: async (values: any, { setSubmitting }: FormikHelpers<any>) => {
+			console.log("Form Submitted Values:", values);
+
+			try {
+				setErrorHandling(true);
+
+				if (!editId) {
+					console.error("Error: editId is missing!");
+					return;
+				}
+
+				const formData = new FormData();
+				formData.append("title", values?.title || "");
+				formData.append("display_name", values?.display_name || "");
+				formData.append("description", values?.description || "");
+				formData.append("price", values?.price || "");
+				formData.append("note", values?.note || "");
+				formData.append("admin_note", values?.admin_note || "");
+				formData.append("service", values?.service || "");
+				formData.append("is_activated", values?.is_activated.toString());
+
+				// **Handling image properly**
+				if (values?.image instanceof File) {
+					formData.append("image", values.image);
+				} else if (typeof values?.image === "string" && values?.image.trim() !== "") {
+					formData.append("image", values.image);
+				}
+
+				// console.log("Final Form Data:", Object.fromEntries(formData.entries()));
+				
+				// **Dispatch update plan**
+				console.log("Dispatching update_Plan with:", { editId, values });
+
+				const response = await dispatch(update_Disconutplan({ editId, values }) as any);
+				console.log("Dispatching update_Plan with:", response);
+				if (response?.error) {
+					console.error("Update Failed:", response.error);
+					return;
+				}
+				console.log("Update Successful:", response);
+
+				// **Refresh plan data**
+				await dispatch(getAll_Disconutplan({}) as any);
+
+				// **Close modal and reset state**
+				setIsOpen(false);
+				showNotification(
+					<span className='d-flex align-items-center '>
+						<Icon icon='Info' size='lg' className='me-1' />
+						<span>Updated Successfully</span>
+					</span>,
+					'Plan has been updated successfully'
+				);
+
+			} catch (error) {
+				console.error("Update Failed:", error);
+			} finally {
+				setSubmitting(false);
+				setAvatarFile(null);
+				setErrorHandling(false);
+				setIsOpen(false);
+			}
+		},
+
+	});
+
+	const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const file = event.target.files?.[0];
+		if (file) {
+			formik.setFieldValue("image", file);
+			setPreviewUrl(URL.createObjectURL(file));
+		}
+	};
+
+
+
+	const [ApiTrue, setApiTrue] = useState(false)
+	const handleAvatarChang = (e: any) => {
+
+		setApiTrue(true)
+
+		setAvatarFile(e.target.files[0]);
+		if (e.target.files && e.target.files.length > 0) {
+			setAvatarFile(e.target.files[0]);
+		}
+	};
+	if (id || id === '0') {
+		return (
+			<Modal isOpen={isOpen} setIsOpen={setIsOpen} size='xl' titleId={id.toString()}>
+				<ModalHeader setIsOpen={setIsOpen} className='p-4'>
+					<ModalTitle id={id}>{editData?.name || 'Edit User'}</ModalTitle>
+				</ModalHeader>
+				<ModalBody className='px-4'>
+					<div className='row g-4'>
+						<FormGroup id="title" label="Title" className="col-md-6">
+							<Input
+								name="title"
+								onChange={formik.handleChange}
+								value={formik.values.title}
+							/>
+							{errorHandling && formik.errors.title ? (
+								<div className="errorMassage">{formik.errors.title as any}</div>
+							) : (
+								<div />
+							)}
+						</FormGroup>
+
+						<FormGroup id="display_name" label="Display Name" className="col-md-6">
+							<Input
+								name="display_name"
+								type="text"
+								onChange={formik.handleChange}
+								value={formik.values.display_name}
+							/>
+
+							{errorHandling && formik.errors.display_name ? (
+								<div className="errorMassage">{formik.errors.display_name as any}</div>
+							) : (
+								<div />
+							)}
+						</FormGroup>
+
+						<FormGroup id="description" label="Description" className="col-md-6">
+							<Input
+								name="description"
+								type="text"
+								onChange={formik.handleChange}
+								value={formik.values.description}
+							/>
+							{errorHandling && formik.errors.description ? (
+								<div className="errorMassage">{formik.errors.description as any}</div>
+							) : (
+								<div />
+							)}
+						</FormGroup>
+
+						<FormGroup id="price" label="Price" className="col-md-6">
+							<Input
+								name="price"
+								type="text"
+								onChange={formik.handleChange}
+								value={formik.values.price}
+							/>
+							{errorHandling && formik.errors.price ? (
+								<div className="errorMassage">{formik.errors.price as any}</div>
+							) : (
+								<div />
+							)}
+						</FormGroup>
+
+						<FormGroup id="note" label="Note" className="col-md-6">
+							<Input
+								name="note"
+								type="text"
+								onChange={formik.handleChange}
+								value={formik.values.note}
+							/>
+							{errorHandling && formik.errors.note ? (
+								<div className="errorMassage">{formik.errors.note as any}</div>
+							) : (
+								<div />
+							)}
+						</FormGroup>
+
+						<FormGroup id="admin_note" label="Admin Note" className="col-md-6">
+							<Input
+								id="admin_note"
+								// className="form-select"
+								name="admin_note"
+								value={formik.values.admin_note}
+								onChange={formik.handleChange}
+							/>
+							{errorHandling && formik.errors.admin_note ? (
+								<div className="errorMassage">{formik.errors.admin_note as any}</div>
+							) : (
+								<div />
+							)}
+						</FormGroup>
+						<FormGroup id="service" label="Service" className="col-md-6">
+							<select
+								id="service"
+								className="form-select"
+								name="service"
+								value={formik.values.service}
+								onChange={formik.handleChange}
+							>
+								<option value="" disabled>
+									...Select...
+								</option>
+								{Service_Data?.map((items: any, index: number) => (
+									<option key={index} value={items._id}>
+										{items.name}
+									</option>
+								))}
+
+							</select>
+							{errorHandling && formik.errors.service ? (
+								<div className="errorMassage">{formik.errors.service as any}</div>
+							) : (
+								<div />
+							)}
+						</FormGroup>
+
+
+						{/* <FormGroup id="service" label="service" className="col-md-6">
+							<select
+								id="service"
+								className="form-select"
+								name="service"
+								value={formik.values.service}
+								onChange={formik.handleChange}
+							>
+								<option value="" disabled>
+									...Select...
+								</option>
+								{Service_Data?.map((items: any, index: number) => (
+									<option key={index} value={items._id}>
+										{items.name}
+									</option>
+								))}
+
+							</select>
+							{errorHandling && formik.errors.service ? (
+								<div className="errorMassage">{formik.errors.service as any}</div>
+							) : (
+								<div />
+							)}
+						</FormGroup> */}
+
+						
+
+						<FormGroup
+							id="is_activated"
+							label="Is Activated"
+							className="col-md-6"
+						>
+							<select
+								id="is_activated"
+								className="form-select"
+								name="is_activated"
+								value={formik.values.is_activated as any}
+								onChange={formik.handleChange}
+							>
+								<option value="true">True</option>
+								<option value="false">False</option>
+							</select>
+							{errorHandling && formik.errors.is_activated ? (
+								<div className="errorMassage">{formik.errors.is_activated as any}</div>
+							) : (
+								<div />
+							)}
+						</FormGroup>
+						<FormGroup id="image" label="Image" className="col-md-6">
+							<input
+								type="file"
+								id="image"
+								name="image"
+								className="form-control"
+								accept="image/*"
+								onChange={handleFileChange}
+							/>
+
+							{previewUrl ? (
+								<img
+									src={previewUrl}
+									alt="Banner Preview"
+									style={{ width: "100px", height: "100px", marginTop: "10px", borderRadius: "5px" }}
+								/>
+							) : (null as unknown as ReactElement)}
+							{errorHandling && formik.touched.image && formik.errors.image ? (
+								<div className="errorMessage">{formik.errors.image as string}</div>
+							) : (
+								<div />
+							)}
+
+						</FormGroup>
+					</div>
+
+				</ModalBody>
+				<ModalFooter className='px-4 pb-4'>
+					<Button color='info' onClick={() => {
+						formik.handleSubmit()
+						setErrorHandling(true)
+					}}>
+						Save
+					</Button>
+				</ModalFooter>
+			</Modal>
+
+		);
+	}
+	return null;
+};
+
+
+EditUser.propTypes = {
+	id: PropTypes.string.isRequired,
+	isOpen: PropTypes.bool.isRequired,
+	setIsOpen: PropTypes.func.isRequired,
+};
+
+export default EditUser;

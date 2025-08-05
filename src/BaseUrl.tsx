@@ -1,2 +1,2 @@
- const BaseUrl = "https://servicesapi.meander.software/"
+ const BaseUrl = "https://datingapi.meander.software"
  export default BaseUrl

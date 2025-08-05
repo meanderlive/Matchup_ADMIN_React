@@ -17,11 +17,10 @@ const User = () => {
 	const { userData, setUser } = useContext(AuthContext);
 const name = localStorage.getItem("facit_authUsername")
 const userLogin =JSON.parse(localStorage.getItem("login") as any)
-const RoleData =JSON.parse(localStorage.getItem("RoleData") as any)
-
+console.log(userLogin?.data?.id,'asdfghj');
 
 	const navigate = useNavigate();
-	const handleItem = useNavigationItemHandle() as any;
+	const handleItem = useNavigationItemHandle();
 	const { darkModeStatus, setDarkModeStatus } = useDarkMode();
 
 	const [collapseStatus, setCollapseStatus] = useState<boolean>(false);
@@ -49,7 +48,7 @@ const RoleData =JSON.parse(localStorage.getItem("RoleData") as any)
 						{/* {`${userData?.name} ${userData?.surname}`} */}
 						<Icon icon='Verified' className='ms-1' color='info' />
 					</div>
-					{/* <div className='user-sub-title'>{userLogin?.name}</div> */}
+					<div className='user-sub-title'>{userData?.position}</div>
 				</div>
 			</div>
 			<DropdownMenu>
@@ -64,34 +63,12 @@ const RoleData =JSON.parse(localStorage.getItem("RoleData") as any)
 						Mode
 					</Button>
 				</DropdownItem>
-			<DropdownItem>
-					<Button
-						icon='ModeEdit'
-						onClick={() =>
-							navigate(
-								`../${dashboardPagesMenu.Roles.path}`,
-							)
-						}>
-						Role
-					</Button>
-				</DropdownItem>
-				<DropdownItem>
-					<Button
-						icon='ModeEdit'
-						onClick={() =>
-							navigate(
-								`../${dashboardPagesMenu.TagCategory.path}`,
-							)
-						}>
-						Service
-					</Button>
-				</DropdownItem>
 				<DropdownItem>
 					<Button
 						icon='AccountBox'
 						onClick={() =>
 							navigate(
-								`/admin-profile/${userLogin?._id}`,
+								`/admin-profile/${userLogin?.data?.id}`,
 							)
 						}>
 						Profile
@@ -110,10 +87,9 @@ const RoleData =JSON.parse(localStorage.getItem("RoleData") as any)
 			<Collapse isOpen={collapseStatus} className='user-menu'>
 				<nav aria-label='aside-bottom-user-menu'>
 					<div className='navigation'>
-
-					
-					<div role='presentation'
-					 className='navigation-item cursor-pointer'
+					<div
+							role='presentation'
+							className='navigation-item cursor-pointer'
 							onClick={() =>
 								navigate(
 									`../${dashboardPagesMenu.modes.path}`,
@@ -125,86 +101,7 @@ const RoleData =JSON.parse(localStorage.getItem("RoleData") as any)
 								<span className='navigation-link-info'>
 									<Icon icon='ModeEdit' className='navigation-icon' />
 									<span className='navigation-text'>
-										{t("Modes ") as ReactNode}
-									</span>
-								</span>
-							</span>
-						</div>
-
-
-						<div
-						role='presentation'
-					 className='navigation-item cursor-pointer'
-							onClick={() =>
-								navigate(
-									`../${dashboardPagesMenu.Roles.path}`,
-									// @ts-ignore
-									handleItem(),
-								)
-							}>
-							<span className='navigation-link navigation-link-pill'>
-								<span className='navigation-link-info'>
-									<Icon icon='EditCalendar' className='navigation-icon' />
-									<span className='navigation-text'>
-										{t("Roles ") as ReactNode}
-									</span>
-								</span>
-							</span>
-						</div>
-
-						<div role='presentation'
-					 className='navigation-item cursor-pointer'
-							onClick={() =>
-								navigate(
-									`../${dashboardPagesMenu.Permission.path}`,
-									// @ts-ignore
-									handleItem(),
-								)
-							}>
-							<span className='navigation-link navigation-link-pill'>
-								<span className='navigation-link-info'>
-									<Icon icon='ModeEdit' className='navigation-icon' />
-									<span className='navigation-text'>
-										{t("Permissions") as ReactNode}
-									</span>
-								</span>
-							</span>
-						</div>
-
-						<div
-						role='presentation'
-					 className='navigation-item cursor-pointer'
-							onClick={() =>
-								navigate(
-									`../${dashboardPagesMenu.TagCategory.path}`,
-									// @ts-ignore
-									handleItem(),
-								)
-							}>
-							<span className='navigation-link navigation-link-pill'>
-								<span className='navigation-link-info'>
-									<Icon icon='EditCalendar' className='navigation-icon' />
-									<span className='navigation-text'>
-										{t("Tag Category") as ReactNode}
-									</span>
-								</span>
-							</span>
-						</div>
-						<div
-						role='presentation'
-					 className='navigation-item cursor-pointer'
-							onClick={() =>
-								navigate(
-									`../${dashboardPagesMenu.Tag.path}`,
-									// @ts-ignore
-									handleItem(),
-								)
-							}>
-							<span className='navigation-link navigation-link-pill'>
-								<span className='navigation-link-info'>
-									<Icon icon='EditCalendar' className='navigation-icon' />
-									<span className='navigation-text'>
-										{t("Tag's") as ReactNode}
+										{t("Mode Mangement") as ReactNode}
 									</span>
 								</span>
 							</span>
@@ -214,7 +111,7 @@ const RoleData =JSON.parse(localStorage.getItem("RoleData") as any)
 							className='navigation-item cursor-pointer'
 							onClick={() =>
 								navigate(
-									`/admin-profile/${userLogin?._id}`,
+									`/admin-profile/${userLogin?.data?.id}`,
 									// @ts-ignore
 									handleItem(),
 								)

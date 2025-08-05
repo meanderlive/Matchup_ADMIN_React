@@ -13,20 +13,10 @@ export const PER_COUNT = {
 	50: 50,
 };
 
-// export const dataPagination = (data: any[], currentPage: number, perPage: number) =>
-// 	data.filter(
-// 		(i, index) => index - -1 >= (currentPage - 1) * perPage ,
-// 	);
-export const dataPagination = (data: any[], currentPage: number, perPage: number) => {
-	const totalItems = data.length;
-	const startIndex = totalItems - (currentPage * perPage);
-	const endIndex = totalItems - ((currentPage - 1) * perPage);
-	
-	// Make sure to return only items that are within the bounds of the array
-	return data.slice(Math.max(startIndex, 0), Math.min(endIndex, totalItems)).reverse();
-};
-
-
+export const dataPagination = (data: any[], currentPage: number, perPage: number) =>
+	data.filter(
+		(i, index) => index + 1 > (currentPage - 1) * perPage && index + 1 <= currentPage * perPage,
+	);
 
 interface IPaginationButtonsProps {
 	setCurrentPage(...args: unknown[]): unknown;

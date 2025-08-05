@@ -74,21 +74,15 @@ export const average = (array: any[]) => array.reduce((a, b) => a + b) / array.l
 export const percent = (value1: number, value2: number) =>
 	Number(((value1 / value2 - 1) * 100).toFixed(2));
 
-// export const getFirstLetter = (text: string, letterCount = 2): string =>
+export const getFirstLetter = (text: string, letterCount = 2): string =>
 
-// 	// @ts-ignore
-//  	text
-// 	.toUpperCase()
-// 	.match(/\b(\w)/g)
-// 	.join('')
-// 	.substring(0, letterCount);
+	// @ts-ignore
+ 	text
+	.toUpperCase()
+	.match(/\b(\w)/g)
+	.join('')
+	.substring(0, letterCount);
 
-export const getFirstLetter = (text: string = "", letterCount = 2): string => 
-	text
-	  .toUpperCase()
-	  .match(/\b(\w)/g)?.join('') 
-	  .substring(0, letterCount) || ""; 
-  
 
 export const debounce = (func: (arg0: any) => void, wait = 1000) => {
 	let timeout: string | number | NodeJS.Timeout | undefined;

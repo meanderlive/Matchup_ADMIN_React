@@ -15,7 +15,7 @@ export const createSubscriptionApi =async(data:any)=>{
 
 export const getAllSubscriptionApi = async(modeid :any)=>{
     try {
-        const response = await axios.get(`${BaseUrl}/Subscription/getall/${modeid}?page_no=1&page_size=999`)
+        const response = await axios.get(`${BaseUrl}/Subscription/getall/${modeid}?page_no=1&page_size=100`)
         return response
     } catch (error) {
         console.log(error)  

@@ -1,5 +1,4 @@
-const RoleData = JSON.parse(localStorage.getItem("RoleData") as any)
-
+const modeid = localStorage.getItem('modeid');
 export const summaryPageTopMenu = {
 	intro: { id: 'intro', text: 'Intro', path: '#intro', icon: 'Vrpano', subMenu: null },
 	bootstrap: {
@@ -41,382 +40,193 @@ export const dashboardPagesMenu = {
 		subMenu: null,
 		// hide:true
 	},
-
-	management: {
-		id: 'dashboard',
-		text: 'Management',
-		path: '/',
-		icon: 'Dashboard',
-		subMenu: {
-			Admin_management: {
-				id: 'user_management',
-				text: "Admin's",
-				path: 'Admin_management', // Add the currentPage parameter to the path
-				icon: 'Person',
-		
+ 
+ 
+	 
+	// test: {
+	// 	id: 'test',
+	// 	text: 'Test',
+	// 	path: 'test',
+	// 	icon: 'sticky_note_2',
+	// 	subMenu: null,
+	// },
+	user_management: {
+		id: 'user_management',
+		text: modeid === '659ba5786881dc1bef082ee3'   ? 'Pet Management': 'User Management',
+		path: 'user_management', // Add the currentPage parameter to the path
+		icon: 'Person',
+		subMenu:{
+			profile_management: {
+				id: 'boxedSingle',
+				text: 'Profile Management',
+				path: 'profile_management',
+				icon: modeid === '659ba5786881dc1bef082ee3'   ? 'Pets': 'AccountBox',
 			},
-			Finance_management: {
-				id: 'user_management',
-				text: "Finance Admin's",
-				path: 'Finance_Admin', // Add the currentPage parameter to the path
+			Owner_management: {
+				id: 'boxedSingle',
+				text: 'Owner Management',
+				path: 'owner_management',
 				icon: 'Person',
-		
+				hide: modeid !== '659ba5786881dc1bef082ee3',
 			},
-			Service_management: {
-				id: 'user_management',
-				text: "Service Admin's",
-				path: 'Service_Admin', // Add the currentPage parameter to the path
-				icon: 'Person',
-		
+			reported_users: {
+				id: 'fluidSingle',
+				text: 'Reported Users',
+				path: 'reported_users',
+				icon: 'Report',
 			},
-			Provider_management: {
-				id: 'user_management',
-				text: "Provider's",
-				path: 'Provider_management', // Add the currentPage parameter to the path
-				icon: 'Person',
-		
+			 
+			Interest: {
+				id: 'my_interest',
+				text: 'Interest',
+				path: 'my_interest',
+				icon: 'FavoriteBorder',
+				 
 			},
-			user_management: {
-				id: 'user_management',
-				text: "Customer's",
-				path: 'user_management', // Add the currentPage parameter to the path
-				icon: 'Person',
-		
-			},
-			Driver_management: {
-				id: 'user_management',
-				text: "Driver's",
-				path: 'Driver_management', // Add the currentPage parameter to the path
-				icon: 'Person',
-		
-			},
-
 		},
-		hide:true
-	},
-	// Admin_management: {
-	// 	id: 'user_management',
-	// 	text: 'Admin',
-	// 	path: 'user_management', // Add the currentPage parameter to the path
-	// 	icon: 'Person',
-
-	// },
-	// Finance_management: {
-	// 	id: 'user_management',
-	// 	text: 'Finance Admin',
-	// 	path: 'user_management', // Add the currentPage parameter to the path
-	// 	icon: 'Person',
-
-	// },
-	// Service_management: {
-	// 	id: 'user_management',
-	// 	text: 'Service Admin',
-	// 	path: 'user_management', // Add the currentPage parameter to the path
-	// 	icon: 'Person',
-
-	// },
-	// Provider_management: {
-	// 	id: 'user_management',
-	// 	text: 'Provider',
-	// 	path: 'user_management', // Add the currentPage parameter to the path
-	// 	icon: 'Person',
-
-	// },
-	// user_management: {
-	// 	id: 'user_management',
-	// 	text: 'Customer',
-	// 	path: 'user_management', // Add the currentPage parameter to the path
-	// 	icon: 'Person',
-
-	// },
-	// Driver_management: {
-	// 	id: 'user_management',
-	// 	text: 'Driver',
-	// 	path: 'user_management', // Add the currentPage parameter to the path
-	// 	icon: 'Person',
-
-	// },
-
-	services: {
-		id: 'service_management',
-		text: 'Services',
-		path: 'services', // Add the currentPage parameter to the path
-		icon: 'Mediation',
-
-	},
-
-
-	bookings: {
-		id: 'bookings',
-		text: 'Bookings',
-		path: 'bookings', // Add the currentPage parameter to the path
-		icon: 'ManageSearch',
-
-	},
-
-	demandingStaff: {
-		id: 'Demanding_Staff',
-		text: 'Staff',
-		path: 'demandingStaff', // Add the currentPage parameter to the path
-		icon: ' Mediation',
-
-	},
-
-	Offerings: {
-		id: 'Offerings',
-		text: 'Offerings ',
-		path: 'plans', // Add the currentPage parameter to the path
-		icon: 'LocalOffer',
-
-	},
-
-	subscriptions_plan: {
-		id: 'subscriptions-plan',
-		text: 'Subscriptions Plan',
-		path: 'subscriptions-plan', // Add the currentPage parameter to the path
-		icon: 'LocalOffer',
-
-	},
-	
-
-	discountedplan: {
-		id: 'Discount_Plans',
-		text: 'Discount Plans',
-		path: 'discountplans', // Add the currentPage parameter to the path
-		icon: 'LocalOffer',
-
-	},
-
-	subscriptionsdetails: {
-		id: 'subscriptions',
-		text: 'Subscriptions Details',
-		path: 'subscriptions', // Add the currentPage parameter to the path
-		icon: 'LocalOffer',
-
-	},
-	Transactions: {
-		id: 'Transactions',
-		text: 'Transactions',
-		path: 'transactions', // Add the currentPage parameter to the path
-		icon: 'Money',
-
-	},
-	Reviews: {
-		id: 'Reviews',
-		text: 'Reviews',
-		path: 'reviews', // Add the currentPage parameter to the path
-		icon: 'Star',
-
-	},
-	Inventories: {
-		id: 'Inventories',
-		text: 'Inventories',
-		path: 'Inventories', // Add the currentPage parameter to the path
-		icon: 'ListAlt',
-
-	},
-
-	payments: {
-		id: 'payments',
-		text: 'Payments',
-		path: 'payments', // Add the currentPage parameter to the path
-		icon: 'Payments',
-
-	},
-
-	preferences: {
-		id: 'preferences',
-		text: 'preferences',
-		path: 'preferences', // Add the currentPage parameter to the path
-		icon: 'Payment',
-
-	},
-
-
-	Reports: {
+	},	
+	Matchmaking_Tools: {
 		id: 'Matchmaking_Tools',
-		text: 'Reports',
+		text: 'Matchmaking_Tools',
 		path: 'Matchmaking_Tools', // Add the currentPage parameter to the path
 		icon: 'Compare',
-		hide: true,
 		subMenu:{
-			Customer_Loyality: {
+			Search_Filter_Customization: {
 				id: 'boxedSingle',
-				text: 'Customer_Loyality',
+				text: 'Search & Filter Customization',
 				path: 'search_filter_customization',
 				icon: 'ManageSearch',
 			},
-			// compatibility_quizzes: {
-			// 	id: 'fluidSingle',
-			// 	text: 'Compatibility Quizzes',
-			// 	path: 'compatibility_quizzes',
-			// 	icon: 'Compare',
-			// },
+			compatibility_quizzes: {
+				id: 'fluidSingle',
+				text: 'Compatibility Quizzes',
+				path: 'compatibility_quizzes',
+				icon: 'Compare',
+			},
 		},
 	},	
-	// 	financial_management: {
-	// 		id: 'financial_management',
-	// 		text: 'Financial Management',
-	// 		path: 'financial_management', // Add the currentPage parameter to the path
-	// 		icon: 'Money',
-	// 		hide:true,
-	// 		subMenu:{
-	// 			subscription_plans: {
-	// 				id: 'subscription_plans',
-	// 				text: 'Subscription Plans',
-	// 				path: 'subscription_plans',
-	// 				icon: 'Stars',
-	// 			},
-	// 			payment_history_invoicing: {
-	// 				id: 'payment_history_invoicing',
-	// 				text: 'Payment History & Invoicing',
-	// 				path: 'payment_history_invoicing',
-	// 				icon: 'Payment',
-	// 			},
-	// 			financial_reporting: {
-	// 				id: 'financial_reporting',
-	// 				text: 'Financial Reporting',
-	// 				path: 'financial_reporting',
-	// 				icon: 'Payments',
-	// 			},
-	// 			in_app_purchase_tracking: {
-	// 				id: 'in_app_purchase_tracking',
-	// 				text: 'In-App Purchase Tracking',
-	// 				path: 'in_app_purchase_tracking',
-	// 				icon: 'Money',
-	// 			},
-	// 		},
-	// 	},	
+	financial_management: {
+		id: 'financial_management',
+		text: 'Financial Management',
+		path: 'financial_management', // Add the currentPage parameter to the path
+		icon: 'Money',
+		subMenu:{
+			subscription_plans: {
+				id: 'subscription_plans',
+				text: 'Subscription Plans',
+				path: 'subscription_plans',
+				icon: 'Stars',
+			},
+			payment_history_invoicing: {
+				id: 'payment_history_invoicing',
+				text: 'Payment History & Invoicing',
+				path: 'payment_history_invoicing',
+				icon: 'Payment',
+			},
+			financial_reporting: {
+				id: 'financial_reporting',
+				text: 'Financial Reporting',
+				path: 'financial_reporting',
+				icon: 'Payments',
+			},
+			in_app_purchase_tracking: {
+				id: 'in_app_purchase_tracking',
+				text: 'In-App Purchase Tracking',
+				path: 'in_app_purchase_tracking',
+				icon: 'Money',
+			},
+		},
+	},	
 	content_management: {
 		id: 'content_management',
 		text: 'Content Management',
 		path: 'content_management', // Add the currentPage parameter to the path
 		icon: 'Contacts',
-		hide: true,
-		subMenu: {
-			// media_library_management: {
-			// 	id: 'media_library_management',
-			// 	text: 'Media Library Management',
-			// 	path: 'media_library_management',
-			// 	icon: 'Mediation',
-			// },
+		subMenu:{
+			media_library_management: {
+				id: 'media_library_management',
+				text: 'Media Library Management',
+				path: 'media_library_management',
+				icon: 'Mediation',
+			},
 			blog_articles_publishing: {
 				id: 'blog_articles_publishing',
 				text: 'Blog & Articles Publishing',
-				path: 'Blog',
+				path: 'blog_articles_publishing',
 				icon: 'ListAlt',
 			},
-			// community_guidelines_enforcement: {
-			// 	id: 'community_guidelines_enforcement',
-			// 	text: 'Community Guidelines Enforcement',
-			// 	path: 'community_guidelines_enforcement',
-			// 	icon: 'Dangerous',
-			// },
+			community_guidelines_enforcement: {
+				id: 'community_guidelines_enforcement',
+				text: 'Community Guidelines Enforcement',
+				path: 'community_guidelines_enforcement',
+				icon: 'Dangerous',
+			},
 			faq_management: {
 				id: 'faq_management',
-				text: 'FAQ',
+				text: 'FAQ Management',
 				path: 'faq_management',
 				icon: 'FormatClear',
 			},
-			// notification_editors_management: {
-			// 	id: 'notification_editors_management',
-			// 	text: 'Notification Editors & management ',
-			// 	path: 'notification_editors_management',
-			// 	icon: 'NotificationAdd',
-			// },
-			// promotion_discount_tools: {
-			// 	id: 'promotion_discount_tools',
-			// 	text: 'Promotion & Discount Tools',
-			// 	path: 'promotion_discount_tools',
-			// 	icon: 'LocalOffer',
-			// },
+			notification_editors_management : {
+				id: 'notification_editors_management',
+				text: 'Notification Editors & management ',
+				path: 'notification_editors_management',
+				icon: 'NotificationAdd',
+			},
+			promotion_discount_tools: {
+				id: 'promotion_discount_tools',
+				text: 'Promotion & Discount Tools',
+				path: 'promotion_discount_tools',
+				icon: 'LocalOffer',
+			},
 		},
 		support_help_desk: {
 			id: 'support_help_desk',
 			text: 'Support/Help Desk',
 			path: 'support_help_desk', // Add the currentPage parameter to the path
 			icon: 'SupportAgent',
-			hide: true,
-
-		},
-		notification_system: {
-			id: 'notification_system',
-			text: 'Notification System',
-			path: 'notification_system', // Add the currentPage parameter to the path
-			icon: 'NotificationsActive',
-			hide: true,
-
-		},
+			 
+	},	
+	notification_system: {
+		id: 'notification_system',
+		text: 'Notification System',
+		path: 'notification_system', // Add the currentPage parameter to the path
+		icon: 'NotificationsActive',
+		 
+},	
 	},
 	compliance_and_legal: {
 		id: 'compliance_and_legal',
 		text: 'Compliance and Legal',
 		path: 'compliance_and_legal', // Add the currentPage parameter to the path
 		icon: 'GppGood',
-		hide: true,
-
+		 
+			 
+},	
+support_help_desk: {
+	id: 'support_help_desk',
+	text: 'Support/Help Desk',
+	path: 'support_help_desk', // Add the currentPage parameter to the path
+	icon: 'SupportAgent',
+	 
+},	
+notification_system: {
+id: 'notification_system',
+text: 'Notification System',
+path: 'notification_system', // Add the currentPage parameter to the path
+icon: 'NotificationsActive',
 
 	},
-	support_help_desk: {
-		id: 'support_help_desk',
-		text: 'Support/Help Desk',
-		path: 'support_help_desk', // Add the currentPage parameter to the path
-		icon: 'SupportAgent',
-
-	},
-	notification_system: {
-		id: 'notification_system',
-		text: 'Notification System',
-		path: 'notification_system', // Add the currentPage parameter to the path
-		icon: 'NotificationsActive',
-
-	},
-
-
+	
+	 
 	modes: {
 		id: 'modes',
 		text: 'modes',
 		path: 'modes',
 		icon: 'DeveloperMode',
 		subMenu: null,
-		hide: true
+		hide :true
 	},
-	Roles: {
-		id: 'roles',
-		text: 'roles', 
-		path: 'roles',
-		icon: 'DeveloperMode',
-		subMenu: null,
-		hide: true
-	},
-
-	Permission:{
-		id: 'permission',
-		text: 'Permissions',
-		path: 'permissions',
-		icon: 'DeveloperMode',
-		subMenu: null,
-		hide: true
-	},
-
-	TagCategory: {
-		id: 'tagcategory',
-		text: 'tagcategory',
-		path: 'tagcategory',
-		icon: 'DeveloperMode',
-		subMenu: null,
-		hide: true
-	},
-	Tag: {
-		id: 'tags',
-		text: 'tags',
-		path: 'tags',
-		icon: 'DeveloperMode',
-		subMenu: null,
-		hide: true
-	},
-
-
 	// support_help_desk: {
 	// 	id: 'support_help_desk',
 	// 	text: 'Support/Help Desk',
@@ -427,7 +237,7 @@ export const dashboardPagesMenu = {
 };
 
 
-
+  
 export const demoPagesMenu = {
 	pages: {
 		id: 'pages',

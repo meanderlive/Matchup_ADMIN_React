@@ -2,9 +2,23 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
 import {  createProfile, createUsera, deleteUser, getAlluser, searchUser, sortUser, updateUser,getbyiduser, searchUserbyAge, RemoveImageintoGallery, uploadGalleryImage } from "../Api/UserManagement";
 
- 
+interface User {
+    _id:string;
+  name: string;
+  password: string;
+  email: string;
+  DOB: string;
+  phone_number: string;
+  mode: string;
+  iAm: "Male" | "Female";
+  looking: "Male" | "Female";
+  marial: "Single" | "Married";
+  status: "active" | "inactive";
+  city: string;
+}
+
 interface UserState {
-  users: any;
+  users: User[];
   user: any;
   page:any;
   loading: boolean;
@@ -19,7 +33,7 @@ const initialState: UserState = {
   error: null,
 };
 
-export const createUser = createAsyncThunk<any, any>(
+export const createUser = createAsyncThunk<User[], any>(
   'user/createUser',
   async (data: any) => {
     const {values,avatarFil}=data
@@ -29,7 +43,7 @@ export const createUser = createAsyncThunk<any, any>(
       if(response.data.isSuccess){
         createProfile({imageid,avatarFil})
       }
-      return response.data as any;
+      return response.data as User[];
     } catch (error) {
       console.error("Error creating user:", error);
       throw error;
@@ -38,7 +52,7 @@ export const createUser = createAsyncThunk<any, any>(
 );
 
 
-export const uploadGalleryImages = createAsyncThunk<any, any>(
+export const uploadGalleryImages = createAsyncThunk<User[], any>(
   'user/uploadGalleryImages',
   async (data: any) => {
     const {id,avatarFil}=data
@@ -56,12 +70,12 @@ export const uploadGalleryImages = createAsyncThunk<any, any>(
 
 
 
-export const fetchUser = createAsyncThunk<any, any>(
+export const fetchUser = createAsyncThunk<User[], any>(
   'user/fetchUser',
   async (data:any) => {
     try {
       const response: AxiosResponse<any, any> | undefined = await getAlluser(data);
-      return response.data as any;
+      return response.data as User[];
     } catch (error) {
       console.error("Error fetching users:", error);
       throw error;
@@ -69,24 +83,24 @@ export const fetchUser = createAsyncThunk<any, any>(
   }
 );
 
-export const getbyidusers = createAsyncThunk<any, any>(
+export const getbyidusers = createAsyncThunk<User[], any>(
   'user/getbyidusers',
   async (data:any) => {
     try {
       const response: AxiosResponse<any, any> | undefined = await getbyiduser(data);
-      return response.data as any;
+      return response.data as User[];
     } catch (error) {
       console.error("Error fetching users:", error);
       throw error;
     }
   }
 );
-export const fetchdeleteUser = createAsyncThunk<any, any>(
+export const fetchdeleteUser = createAsyncThunk<User[], any>(
     'user/fetchdeleteUser',
     async (id: any) => {
       try {
         const response: AxiosResponse<any, any> | undefined = await deleteUser(id);
-        return response.data as any;
+        return response.data as User[];
       } catch (error) {
         console.error("Error fetching users:", error);
         throw error;
@@ -96,13 +110,13 @@ export const fetchdeleteUser = createAsyncThunk<any, any>(
 
 
   
-  export const fetchupdateUser = createAsyncThunk<any, any>(
+  export const fetchupdateUser = createAsyncThunk<User[], any>(
     'user/fetchdeleteUser',
     async (data:any) => {
       
       try {
         const response= await updateUser(data);
-        return response.data as any;
+        return response.data as User[];
       } catch (error) {
         console.error("Error fetching users:", error);
         throw error;
@@ -110,7 +124,7 @@ export const fetchdeleteUser = createAsyncThunk<any, any>(
     }
   );
 
-  export const RemoveImageintoGallerys = createAsyncThunk<any, any>(
+  export const RemoveImageintoGallerys = createAsyncThunk<User[], any>(
     'user/RemoveImageintoGallerys',
     async (data:any) => {
       const {id ,item}=data
@@ -127,25 +141,25 @@ export const fetchdeleteUser = createAsyncThunk<any, any>(
     }
   );
   // search 
-  export const fetchsearchUser = createAsyncThunk<any, any>(
+  export const fetchsearchUser = createAsyncThunk<User[], any>(
     'user/fetchsearchUser',
     async (data: any) => {
       try {
         const response:any= await searchUser(data);
-        return response as any;
+        return response as User[];
       } catch (error) {
         console.error("Error creating user:", error);
         throw error;
       }
     }
   );
-  export const searchUserbyAges = createAsyncThunk<any, any>(
+  export const searchUserbyAges = createAsyncThunk<User[], any>(
     'user/searchUserbyAges',
     async (data: any) => {
  
       try {
         const response:any= await searchUserbyAge(data);
-        return response as any;
+        return response as User[];
       } catch (error) {
         console.error("Error creating user:", error);
         throw error;
@@ -153,12 +167,12 @@ export const fetchdeleteUser = createAsyncThunk<any, any>(
     }
   );
   // sortUser
-  export const fetchsortUser = createAsyncThunk<any, any>(
+  export const fetchsortUser = createAsyncThunk<User[], any>(
     'user/fetchsortUser',
     async (sort: any) => {
       try {
         const response:any= await sortUser(sort);
-        return response as any;
+        return response as User[];
       } catch (error) {
         console.error("Error creating user:", error);
         throw error;

@@ -24,7 +24,7 @@ import Button from '../../../components/bootstrap/Button';
 import Label from '../../../components/bootstrap/forms/Label';
 import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
 import { fetchUser, fetchdeleteUser } from '../../../redux/Slice/UserManagement_slice';
-// import { delete_Subscription, getAll_Subscription } from '../../../redux/Slice/Subscriptions_Slice';
+import { fetchdeleteSubscription, getallSubscription } from '../../../redux/Slice/SubscriptionPlans_Slice';
 import { deleteFaqSlice, getallFaqSlice } from '../../../redux/Slice/FaqSlice';
 import { deleteInterestSlice, getAllInterest } from '../../../redux/Slice/IntersetSlice';
 // import PAYMENTS from '../../../common/data/enumPaymentMethod';

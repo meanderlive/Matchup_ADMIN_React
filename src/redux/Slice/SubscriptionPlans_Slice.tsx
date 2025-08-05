@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AxiosResponse } from "axios";
-import { createSubscriptionPlans, deleteSubscriptionPlans, getAllSubscriptionPlans, SubscriptionPlans_Image, updateSubscriptionPlans } from "../Api/SubscriptionPlans";
+import { createSubscriptionPlans, deleteSubscriptionPlans, getAllSubscriptionPlans, updateSubscriptionPlans } from "../Api/SubscriptionPlans";
 
 interface User {
 
@@ -16,19 +16,19 @@ interface User {
 }
 
 interface UserState {
-    SubscriptionPlan: any;
+    Subscription: User[];
   loading: boolean;
   error: null | string;
 }
 
 const initialState: UserState = {
-    SubscriptionPlan: {},
+    Subscription: [],
   loading: false,
   error: null,
 };
 
-export const createSubscriptionPlan = createAsyncThunk<User[], any>(
-  'SubscriptionPlan/createSubscriptionPlan',
+export const createSubscription = createAsyncThunk<User[], any>(
+  'Subscription/createSubscription',
   async (data: any) => {
     try {
       const response: AxiosResponse<any, any> | undefined = await createSubscriptionPlans(data);
@@ -37,12 +37,12 @@ export const createSubscriptionPlan = createAsyncThunk<User[], any>(
     } catch (error) {
       console.error("Error creating user:", error);
       throw error;
-    } 
+    }
   }
 );
 
-export const getallSubscriptionPlan = createAsyncThunk<User[], any>(
-    'SubscriptionPlan/getallSubscriptionPlan',
+export const getallSubscription = createAsyncThunk<User[], any>(
+    'Subscription/getallSubscription',
     async (data: any) => {
       try {
         const response: AxiosResponse<any, any> | undefined = await getAllSubscriptionPlans(data);
@@ -55,8 +55,8 @@ export const getallSubscriptionPlan = createAsyncThunk<User[], any>(
     }
   );
   
-  export const fetchdeleteSubscriptionPlan = createAsyncThunk<User[], any>(
-    'SubscriptionPlan/fetchdeleteSubscriptionPlan',
+  export const fetchdeleteSubscription = createAsyncThunk<User[], any>(
+    'Subscription/fetchdeleteSubscription',
     async (id: any) => {
       try {
         const response: AxiosResponse<any, any> | undefined = await deleteSubscriptionPlans(id);
@@ -69,7 +69,7 @@ export const getallSubscriptionPlan = createAsyncThunk<User[], any>(
   );
 
   export const editSubscriptionPlans = createAsyncThunk<User[], any>(
-    'SubscriptionPlan/editSubscriptionPlans',
+    'Subscription/editSubscriptionPlans',
     async (data: any) => {
       try {
         const response= await updateSubscriptionPlans(data);
@@ -80,18 +80,7 @@ export const getallSubscriptionPlan = createAsyncThunk<User[], any>(
       }
     }
   );
-  export const SubscriptionPlans_Images = createAsyncThunk<User[], any>(
-    'SubscriptionPlan/SubscriptionPlans_Images',
-    async (data: any) => {
-      try {
-        const response= await SubscriptionPlans_Image(data);
-        return response.data as User[];
-      } catch (error) {
-        console.error("Error fetching users:", error);
-        throw error;
-      }
-    }
-  );
+
   
 
 const SubscriptionPlansSlice = createSlice({
@@ -100,55 +89,36 @@ const SubscriptionPlansSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(createSubscriptionPlan.fulfilled, (state, action:any) => {
+      .addCase(createSubscription.fulfilled, (state, action:any) => {
         console.log(action.payload)
-        state.SubscriptionPlan = action.payload;
+        // state.Subscription = action.payload;
 
         // state.Subscription.push(action.payload);
         state.loading = false;
       })
-      .addCase(createSubscriptionPlan.pending, (state, action) => {
+      .addCase(createSubscription.pending, (state, action) => {
         state.loading = true;
       })
-      .addCase(createSubscriptionPlan.rejected, (state, action) => {
+      .addCase(createSubscription.rejected, (state, action) => {
         state.loading = false;
         state.error = "error";
       })
-      .addCase(getallSubscriptionPlan.fulfilled, (state, action) => {
+      .addCase(getallSubscription.fulfilled, (state, action) => {
         console.log(action.payload)
-        state.SubscriptionPlan = action.payload;
+        state.Subscription = action.payload;
 
         // state.users.push(...action.payload);
         state.loading = false;
       })
-      .addCase(getallSubscriptionPlan.pending, (state, action) => {
+      .addCase(getallSubscription.pending, (state, action) => {
         state.loading = true;
       })
-      .addCase(getallSubscriptionPlan.rejected, (state, action) => {
+      .addCase(getallSubscription.rejected, (state, action) => {
         state.loading = false;
         state.error = "error";
       })
-
-      // upload plan image
-      .addCase(SubscriptionPlans_Images.fulfilled, (state, action) => {
-        console.log(action.payload)
-        state.SubscriptionPlan = action.payload;
-
-        // state.users.push(...action.payload);
-        state.loading = false;
-      })
-      .addCase(SubscriptionPlans_Images.pending, (state, action) => {
-        state.loading = true;
-      })
-      .addCase(SubscriptionPlans_Images.rejected, (state, action) => {
-        state.loading = false;
-        state.error = "error";
-      })
-
-
-
         //   delete
-        .addCase(fetchdeleteSubscriptionPlan.fulfilled, (state, action) => {
+        .addCase(fetchdeleteSubscription.fulfilled, (state, action) => {
             console.log(action.payload)
             // const alldata= state.users.filter((items:any)=>items._id!==action.payload._id)
             // state.users.push(...action.payload);

@@ -197,354 +197,125 @@ const EXTRA = {
 // const TEST ={
 // 	TEST:lazy(()=>import('../pages/presentation/test/test'))
 // };
-const ADMIN_PROFILE = {
-	ADMIN_PROFILE: lazy(() => import('../pages/presentation/AdminProfile/AdminProfile')),
-
-
-}
-const MANAGEMENT = {
-	USER_MANAGEMENT: lazy(() => import('../pages/project_pages/user_management/user_management')),
-	USER_MANAGEMENT_VIEW: lazy(() => import('../pages/project_pages/user_management/User_view_customer')),
-	ADMIN_MANAGEMENT: lazy(() => import('../pages/project_pages/Admin/Admin_management')),
-	ADMIN_MANAGEMENT_VIEW: lazy(() => import('../pages/project_pages/Admin/View_Admin')),
-	PROVIDER_MANAGEMENT: lazy(() => import('../pages/project_pages/Providers/Provider_management')),
-	PROVIDER_MANAGEMENT_VIEW: lazy(() => import('../pages/project_pages/Providers/View_Provider')),
-	FINANCEADMIN_MANAGEMENT: lazy(() => import('../pages/project_pages/Finance_Admin/Finance_Admin')),
-	FINANCEADMIN_MANAGEMENT_VIEW: lazy(() => import('../pages/project_pages/Finance_Admin/View_FinanceAdmin')),
-	SERVICEADMIN_MANAGEMENT: lazy(() => import('../pages/project_pages/Service_Admin/Service_Admin')),
-	SERVICEADMIN_MANAGEMENT_VIEW: lazy(() => import('../pages/project_pages/Service_Admin/View_ServiceAdmin')),
-	DRIVER_MANAGEMENT: lazy(() => import('../pages/project_pages/Driver/Driver_management')),
-	DRIVER_MANAGEMENT_VIEW: lazy(() => import('../pages/project_pages/Driver/View_Driver'))
-}
-
-const SERVICE_MANAGEMENT = {
-	SERVICE_MANAGEMENT: lazy(() => import('../pages/project_pages/services/service_management')),
-	SERVICE_MANAGEMENT_VIEW: lazy(() => import('../pages/project_pages/services/service_view_customer')),
-
-
+const  ADMIN_PROFILE={
+	ADMIN_PROFILE:lazy(()=>import('../pages/presentation/AdminProfile/AdminProfile')),
+	 
 
 }
-const OFFERINGS = {
-	OFFERINGS: lazy(() => import('../pages/project_pages/plans/plans')),
-	OFFERINGS_VIEW: lazy(() => import('../pages/project_pages/plans/plans_view')),
-}
-
-const BOOKINGS = {
-	BOOKING: lazy(() => import('../pages/project_pages/bookings/bookings')),
-	BOOKING_VIEW: lazy(() => import('../pages/project_pages/bookings/booking_view')),
-}
-
-const REVIEWS = {
-	REVIEWS: lazy(() => import('../pages/project_pages/Reviews/reviews')),
-	REVIEWS_VIEW: lazy(() => import('../pages/project_pages/Reviews/reviews_view')),
-}
-
-const INVENTORIES = {
-	INVENTORIES: lazy(() => import('../pages/project_pages/Inventories/Inventories')),
-	INVENTORIES_VIEW: lazy(() => import('../pages/project_pages/Inventories/Inventories_view')),
-}
-
-const TRANSACTION = {
-	TRANSACTION: lazy(() => import('../pages/project_pages/Transaction/transactions')),
-	TRANSACTION_VIEW: lazy(() => import('../pages/project_pages/Transaction/transaction_view')),
-}
-
-const PAYMENTS = {
-	PAYMENT: lazy(() => import('../pages/project_pages/payments/payments')),
-	PAYMENT_VIEW: lazy(() => import('../pages/project_pages/payments/payment_view')),
-}
-
-const PREFERENCES = {
-	PREFERENCES: lazy(() => import('../pages/project_pages/preferences/preferences')),
-	PREFERENCE_VIEW: lazy(() => import('../pages/project_pages/preferences/preferences_view')),
-}
-
-const SUBSCRIPTION_PLAN = {
-	SUBSCRIPTIONPLAN: lazy(() => import('../pages/project_pages/subscriptions_Plan/subscriptionsplan')),
-	SUBPLANVIEW: lazy(() => import('../pages/project_pages/subscriptions_Plan/subplanview')),
-}
-
-const SUBSCRIPTIONS = {
-	SUBSCRIPTION: lazy(() => import('../pages/project_pages/subscriptionsdetails/subscriptions')),
-	SUBSCRIPTIONVIEW: lazy(() => import('../pages/project_pages/subscriptionsdetails/sububscriptionview')),
-}
-
-const DEMANDINGSTAFF = {
-	DEMANDINGSTAFF: lazy(() => import('../pages/project_pages/demandingStaff/demandingStaff')),
-	DEMANDINGSTAFFVIEW: lazy(() => import('../pages/project_pages/demandingStaff/staff_view')),
-}
-
-const DISCOUNTPLANS = {
-	DISCOUNTPLANS: lazy(() => import('../pages/project_pages/discountedplan/discountplans')),
-	DISCOUNTPLANSVIEW: lazy(() => import('../pages/project_pages/discountedplan/discountplans view')),
-}
+const  USER_MANAGEMENT={
+	USER_MANAGEMENT:lazy(()=>import('../pages/presentation/user_management/user_management')),
+	PET_USER_MANAGEMENT:lazy(()=>import('../pages/PetDating/pet_management/Pet_management')),
+	PET_OWNER_MANAGEMENT:lazy(()=>import('../pages/PetDating/Owner_management/user_management')),
+	OWNER_view_customer:lazy(()=>import('../pages/PetDating/Owner_management/User_view_customer')),
 
 
-const REPORTS = {
-	compatibility_quizzes: lazy(() => import('../pages/presentation/Compatibility_Quizzes/Compatibility_quizzes')),
-	Customer_Loyality: lazy(() => import('../pages/presentation/Search_filter_customization/Search_filter_List'))
+	USER_view_customer:lazy(()=>import('../pages/presentation/user_management/User_view_customer')),
+	PET_view_customer:lazy(()=>import('../pages/PetDating/pet_management/View_page'))
 
 
 }
 
-const SUBSCRIPTION = {
-	SUBSCRIPTION: lazy(() => import('../pages/presentation/Subscription_plans/Subscription_list')),
 
-	FINANCIALREPORTING: lazy(() => import('../pages/presentation/Financial Management/FinancialReporting'))
-}
-const INTEREST = {
-	INTEREST: lazy(() => import('../pages/presentation/Interest/my_interest'))
-}
 
-const CONTENT_MANAGEMENT = {
-	FAQ: lazy(() => import('../pages/presentation/Faq/Faq')),
-	COMMUNITYQUIDELINES: lazy(() => import('../pages/presentation/Community_guidelines/CommunityGuidelines')),
-	BLOG: lazy(() => import('../pages/presentation/BlogArticlesPublishing/BlogArticlesPublishing')),
-	MEDIALIBRARYMANAGEMENT: lazy(() => import('../pages/presentation/MediaLibraryManagement/MediaLibraryManagement'))
-}
-const SUPPORT_HELP_DESK = {
-	SUPPORT_HELP_DESK: lazy(() => import('../pages/presentation/SupportHelpDesk/SupportHelpDesk')),
+const  MATCHMAKINGTOOLS={
+	compatibility_quizzes:lazy(()=>import('../pages/presentation/Compatibility_Quizzes/Compatibility_quizzes')),
+	Search_Filter_Customization:lazy(()=>import('../pages/presentation/Search_filter_customization/Search_filter_List'))
+ 
 
 }
-const SERVICES = {
-	SERVICE: lazy(() => import('../pages/presentation/Common_page/tag_Category/tag_category'))
-}
-const SERVICESROLE = {
-	SERVICEROLE: lazy(() => import('../pages/presentation/Common_page/Tags/tags'))
-}
 
-const MODES = {
-	MODES: lazy(() => import('../pages/presentation/Common_page/modes/modes'))
+const  SUBSCRIPTION={
+	SUBSCRIPTION:lazy(()=>import('../pages/presentation/Subscription_plans/Subscription_list')),
+	
+	FINANCIALREPORTING:lazy(()=>import('../pages/presentation/Financial Management/FinancialReporting'))
 }
-const ROLES = {
-	ROLES: lazy(() => import('../pages/presentation/Common_page/Role/Roles'))
+const  INTEREST={
+	INTEREST:lazy(()=>import('../pages/presentation/Interest/my_interest'))
 }
-
-const PERMISSIONS = {
-	PERMISSIONS: lazy(() => import('../pages/presentation/Common_page/Permissions/Permissions'))
+ 
+const CONTENT_MANAGEMENT ={
+	FAQ:lazy(()=>import('../pages/presentation/Faq/Faq')),
+	COMMUNITYQUIDELINES:lazy(()=>import('../pages/presentation/Community_guidelines/CommunityGuidelines')),
+	BLOG:lazy(()=>import('../pages/presentation/BlogArticlesPublishing/BlogArticlesPublishing')),
+	MEDIALIBRARYMANAGEMENT:lazy(()=>import('../pages/presentation/MediaLibraryManagement/MediaLibraryManagement'))
+}
+const  SUPPORT_HELP_DESK ={
+	SUPPORT_HELP_DESK:lazy(()=>import('../pages/presentation/SupportHelpDesk/SupportHelpDesk')),
+ 
+}
+ 
+const MODES={
+	MODES:lazy(()=>import('../pages/presentation/modes/modes'))
 }
 const presentation: RouteProps[] = [
 
 	// USER_MANAGEMENT
 	{
-		path: dashboardPagesMenu.management.subMenu.user_management.path,
-		element: <MANAGEMENT.USER_MANAGEMENT />
+		path: dashboardPagesMenu.user_management.subMenu.profile_management.path,
+		element:modeid === '659ba5786881dc1bef082ee3'   ?  <USER_MANAGEMENT.PET_USER_MANAGEMENT/>:<USER_MANAGEMENT.USER_MANAGEMENT/>
 	},
 	{
-		path: dashboardPagesMenu.management.subMenu.user_management.path + '/view/:id',
-		element: <MANAGEMENT.USER_MANAGEMENT_VIEW />
+		path:`/profile_management/view/:id`,
+		element:modeid === '659ba5786881dc1bef082ee3'   ?  <USER_MANAGEMENT.PET_view_customer/>:<USER_MANAGEMENT.USER_view_customer/>
 	},
 	{
-		path: dashboardPagesMenu.management.subMenu.Admin_management.path,
-		element: <MANAGEMENT.ADMIN_MANAGEMENT />
+		path:`/Owner_management/view/:id`,
+		element:<USER_MANAGEMENT.OWNER_view_customer/>
 	},
 	{
-		path: dashboardPagesMenu.management.subMenu.Admin_management.path + '/view/:id',
-		element: <MANAGEMENT.ADMIN_MANAGEMENT_VIEW />
+		path: dashboardPagesMenu.user_management.subMenu.Owner_management.path,
+		element:<USER_MANAGEMENT.PET_OWNER_MANAGEMENT/>
 	},
 	{
-		path: dashboardPagesMenu.management.subMenu.Finance_management.path,
-		element: <MANAGEMENT.FINANCEADMIN_MANAGEMENT />
+		path:`/profile_management/view/:id`,
+		element:<USER_MANAGEMENT.USER_view_customer/>
 	},
 	{
-		path: dashboardPagesMenu.management.subMenu.Finance_management.path + '/view/:id',
-		element: <MANAGEMENT.FINANCEADMIN_MANAGEMENT_VIEW />
+		path:`/admin-profile/:id`,
+		element:<ADMIN_PROFILE.ADMIN_PROFILE/>
 	},
-	{
-		path: dashboardPagesMenu.management.subMenu.Service_management.path,
-		element: <MANAGEMENT.SERVICEADMIN_MANAGEMENT />
-	},
-	{
-		path: dashboardPagesMenu.management.subMenu.Service_management.path + '/view/:id',
-		element: <MANAGEMENT.SERVICEADMIN_MANAGEMENT_VIEW />
-	},
-	{
-		path: dashboardPagesMenu.management.subMenu.Provider_management.path,
-		element: <MANAGEMENT.PROVIDER_MANAGEMENT />
-	},
-	{
-		path: dashboardPagesMenu.management.subMenu.Provider_management.path + '/view/:id',
-		element: <MANAGEMENT.PROVIDER_MANAGEMENT_VIEW />
-	},
-	{
-		path: dashboardPagesMenu.management.subMenu.Driver_management.path,
-		element: <MANAGEMENT.DRIVER_MANAGEMENT />
-	},
-	{
-		path: dashboardPagesMenu.management.subMenu.Driver_management.path + '/view/:id',
-		element: <MANAGEMENT.DRIVER_MANAGEMENT_VIEW />
-	},
-	{
-		path: `/admin-profile/:id`,
-		element: <ADMIN_PROFILE.ADMIN_PROFILE />
-	},
-
-
-	// SERVICE
-
-	{
-		path: dashboardPagesMenu.services.path,
-		element: <SERVICE_MANAGEMENT.SERVICE_MANAGEMENT />
-	},
-	{
-		path: dashboardPagesMenu.services.path + '/view/:id',
-		element: <SERVICE_MANAGEMENT.SERVICE_MANAGEMENT_VIEW />
-	},
-	{
-		path: `/admin-profile/:id`,
-		element: <ADMIN_PROFILE.ADMIN_PROFILE />
-	},
-
-
-	// Offerings
-	{
-		path: dashboardPagesMenu.Offerings.path,
-		element: <OFFERINGS.OFFERINGS />
-	},
-	{
-		path: dashboardPagesMenu.Offerings.path + '/view/:id',
-		element: <OFFERINGS.OFFERINGS />
-	},
-
-	// BOOKINGS
-	{
-		path: dashboardPagesMenu.bookings.path,
-		element: <BOOKINGS.BOOKING />
-	},
-	{
-		path: dashboardPagesMenu.bookings.path + '/view/:id',
-		element: <BOOKINGS.BOOKING />
-	},
-
-	// PAYMENTS
-	{
-		path: dashboardPagesMenu.payments.path,
-		element: <PAYMENTS.PAYMENT />
-	},
-	{
-		path: dashboardPagesMenu.payments.path + '/view/:id',
-		element: <PAYMENTS.PAYMENT />
-	},
-
-	// PREFERENCES
-	{
-		path: dashboardPagesMenu.preferences.path,
-		element: <PREFERENCES.PREFERENCES />
-	},
-	{
-		path: dashboardPagesMenu.preferences.path + '/view/:id',
-		element: <PREFERENCES.PREFERENCES />
-	},
-
-	// REVIEWS
-	{
-		path: dashboardPagesMenu.Reviews.path,
-		element: <REVIEWS.REVIEWS />
-	},
-	{
-		path: dashboardPagesMenu.Reviews.path + '/view/:id',
-		element: <REVIEWS.REVIEWS />
-	},
-
-	// INVENTORIES
-	{
-		path: dashboardPagesMenu.Inventories.path,
-		element: <INVENTORIES.INVENTORIES />
-	},
-	{
-		path: dashboardPagesMenu.Inventories.path + '/view/:id',
-		element: <INVENTORIES.INVENTORIES />
-	},
-
-
-	// TRANSACTION
-	{
-		path: dashboardPagesMenu.Transactions.path,
-		element: <TRANSACTION.TRANSACTION />
-	},
-	{
-		path: dashboardPagesMenu.Transactions.path + '/view/:id',
-		element: <TRANSACTION.TRANSACTION />
-	},
-
-
-	// SUBSCRIPTIONS_Plans
-	{
-		path: dashboardPagesMenu.subscriptions_plan.path,
-		element: <SUBSCRIPTION_PLAN.SUBSCRIPTIONPLAN />
-	},
-	{
-		path: dashboardPagesMenu.subscriptions_plan.path + '/view/:id',
-		element: <SUBSCRIPTION_PLAN.SUBSCRIPTIONPLAN />
-	},
-
-
-	// SUBSCRIPTIONS
-	{
-		path: dashboardPagesMenu.subscriptionsdetails.path,
-		element: <SUBSCRIPTIONS.SUBSCRIPTION />
-	},
-	{
-		path: dashboardPagesMenu.subscriptionsdetails.path + '/view/:id',
-		element: <SUBSCRIPTIONS.SUBSCRIPTION />
-	},
-
-	// Discount_Plans
-	{
-		path: dashboardPagesMenu.discountedplan.path,
-		element: <DISCOUNTPLANS.DISCOUNTPLANS />
-	},
-	{
-		path: dashboardPagesMenu.discountedplan.path + '/view/:id',
-		element: <DISCOUNTPLANS.DISCOUNTPLANS />
-	},
-
-	// Demanding_Staff
-	{
-		path: dashboardPagesMenu.demandingStaff.path,
-		element: <DEMANDINGSTAFF.DEMANDINGSTAFF />
-	},
-	{
-		path: dashboardPagesMenu.demandingStaff.path + '/view/:id',
-		element: <DEMANDINGSTAFF.DEMANDINGSTAFF />
-	},
-
-
-
-	// // Matchmaking_Tools
-	{
-		path: dashboardPagesMenu.Reports.subMenu.Customer_Loyality.path,
-		element:<REPORTS.Customer_Loyality/>
-	},
-	// {
-	// 	path: dashboardPagesMenu.Matchmaking_Tools.subMenu.compatibility_quizzes.path,
-	// 	element:<MATCHMAKINGTOOLS.compatibility_quizzes/>
-	// },
 
 
 
 
 
 
-	// // SUBSCRIPTION
-	// {
-	// 	path: dashboardPagesMenu.financial_management.subMenu.subscription_plans.path,
-	// 	element:<SUBSCRIPTION.SUBSCRIPTION/>
-	// },
-	// {
-	// 	path: dashboardPagesMenu.financial_management.subMenu.payment_history_invoicing.path,
-	// 	element: <APP.SALES.TRANSACTIONS />,
-	// },
-	// {
-	// 	path: dashboardPagesMenu.financial_management.subMenu.financial_reporting.path,
-	// 	element: <SUBSCRIPTION.FINANCIALREPORTING />,
-	// },
+
+
+	// Matchmaking_Tools
+	{
+		path: dashboardPagesMenu.Matchmaking_Tools.subMenu.Search_Filter_Customization.path,
+		element:<MATCHMAKINGTOOLS.Search_Filter_Customization/>
+	},
+	{
+		path: dashboardPagesMenu.Matchmaking_Tools.subMenu.compatibility_quizzes.path,
+		element:<MATCHMAKINGTOOLS.compatibility_quizzes/>
+	},
+
+
+
+
+
+
+// SUBSCRIPTION
+{
+	path: dashboardPagesMenu.financial_management.subMenu.subscription_plans.path,
+	element:<SUBSCRIPTION.SUBSCRIPTION/>
+},
+{
+	path: dashboardPagesMenu.financial_management.subMenu.payment_history_invoicing.path,
+	element: <APP.SALES.TRANSACTIONS />,
+},
+{
+	path: dashboardPagesMenu.financial_management.subMenu.financial_reporting.path,
+	element: <SUBSCRIPTION.FINANCIALREPORTING />,
+},
 
 	// INTEREST
-	// {
-	// 	path: dashboardPagesMenu.user_management.subMenu.Interest.path,
-	// 	element:<INTEREST.INTEREST/>
-	// },
+	{
+		path: dashboardPagesMenu.user_management.subMenu.Interest.path,
+		element:<INTEREST.INTEREST/>
+	},
 	// REPORTED_USERS
 	// {
 	// 	path: dashboardPagesMenu.reported_users.path,
@@ -552,7 +323,7 @@ const presentation: RouteProps[] = [
 	// },
 	// PAYMENTS_TRANSACTIONS
 	// {
-	//    path:dashboardPagesMenu.paymentsTransactions.path,
+    //    path:dashboardPagesMenu.paymentsTransactions.path,
 	//    element:<PAYMENTS_TRANSACTIONS.PAYMENTS_TRANSACTIONS/>
 	// },
 	// SUBSCRIPTION_PLANS
@@ -561,7 +332,7 @@ const presentation: RouteProps[] = [
 	// 	element:<SUBSCRIPTION_PLANS.SUBSCRIPTION_PLANS/>
 	//  },
 	//  ANALYTICS_REPORTS
-
+	
 	// {
 	// 	path:dashboardPagesMenu.analytics_reports.path,
 	// 	element:<ANALYTICS_REPORTS.ANALYTICS_REPORTS/>
@@ -576,41 +347,18 @@ const presentation: RouteProps[] = [
 	// 	path:dashboardPagesMenu.settings_configuration.path,
 	// 	element:<SETTINGS_CONFIGURATION.SETTINGS_CONFIGURATION/>
 	//  },
-
 	//  modes
 	{
-		path: dashboardPagesMenu.modes.path,
-		element: <MODES.MODES />
-	},
-
-	// Roles
-	{
-		path: dashboardPagesMenu.Roles.path,
-		element: <ROLES.ROLES />
-	},
-
-	// Permissions
-	{
-		path: dashboardPagesMenu.Permission.path,
-		element: <PERMISSIONS.PERMISSIONS />
-	},
-	// SERVICES
-	{
-		path: dashboardPagesMenu.TagCategory.path,
-		element: <SERVICES.SERVICE />
-	},
-	// SERVICES_ROLE
-	{
-		path: dashboardPagesMenu.Tag.path,
-		element: <SERVICESROLE.SERVICEROLE />
+		path:dashboardPagesMenu.modes.path,
+		element:<MODES.MODES/>
 	},
 
 	// Content Management
-
-	// {
-	// 	path:dashboardPagesMenu.content_management.subMenu.media_library_management.path,
-	// 	element:<CONTENT_MANAGEMENT.MEDIALIBRARYMANAGEMENT/>
-	// },
+	
+	{
+		path:dashboardPagesMenu.content_management.subMenu.media_library_management.path,
+		element:<CONTENT_MANAGEMENT.MEDIALIBRARYMANAGEMENT/>
+	},
 	{
 		path:dashboardPagesMenu.content_management.subMenu.blog_articles_publishing.path,
 		element:<CONTENT_MANAGEMENT.BLOG/>
@@ -619,18 +367,18 @@ const presentation: RouteProps[] = [
 		path:dashboardPagesMenu.content_management.subMenu.faq_management.path,
 		element:<CONTENT_MANAGEMENT.FAQ/>
 	},
-	// {
-	// 	path:dashboardPagesMenu.content_management.subMenu.community_guidelines_enforcement.path,
-	// 	element:<CONTENT_MANAGEMENT.COMMUNITYQUIDELINES/>
-	// },
+	{
+		path:dashboardPagesMenu.content_management.subMenu.community_guidelines_enforcement.path,
+		element:<CONTENT_MANAGEMENT.COMMUNITYQUIDELINES/>
+	},
 
 
 
-	// {
-	// 	path:dashboardPagesMenu.compliance_and_legal.path,
-	// 	element:<CONTENT_MANAGEMENT.COMMUNITYQUIDELINES/>
-	// },
-	// // support_help_desk
+	{
+		path:dashboardPagesMenu.compliance_and_legal.path,
+		element:<CONTENT_MANAGEMENT.COMMUNITYQUIDELINES/>
+	},
+	// support_help_desk
 	{
 		path:dashboardPagesMenu.support_help_desk.path,
 		element:<SUPPORT_HELP_DESK.SUPPORT_HELP_DESK/>

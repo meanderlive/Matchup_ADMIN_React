@@ -41,7 +41,6 @@
 		"function-calc-no-unspaced-operator": true,
 		"function-linear-gradient-no-nonstandard-direction": true,
 		"function-url-quotes": "always",
-		"function-whitespace-after": "always",
 		"function-no-unknown": [
 			true,
 			{
@@ -59,7 +58,16 @@
 					"/#{if/",
 					"/hex-to-rgb/",
 					"rem-to-px",
-					"fade-in"
+					"fade-in",
+					"div",
+					"merge",
+					"get",
+					"adjust",
+					"mix",
+					"nth",
+					"append",
+					"percentage",
+					"length"
 				]
 			}
 		],
@@ -71,8 +79,6 @@
 			}
 		],
 		"media-feature-name-no-vendor-prefix": true,
-		"media-feature-range-operator-space-after": "always",
-		"media-feature-range-operator-space-before": "always",
 		"meowtec/no-px": [
 			true,
 			{
@@ -214,7 +220,7 @@
 		"value-keyword-case": [
 			"lower",
 			{
-				"camelCaseSvgKeywords": false
+				"camelCaseSvgKeywords": true
 			}
 		]
 	}

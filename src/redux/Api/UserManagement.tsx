@@ -1,13 +1,12 @@
 import axios from "axios"
-import BaseUrl from "../../BaseUrl";
 
 
- 
+const BaseURl = 'https://datingapi.meander.software/';
 const token ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTY4NTk4YTdlNjdjNzY2YTBhZjdkZTciLCJpYXQiOjE3MDEzMzc1MzV9.DvR_WLhCF_WmMhisJ4vrd_BJJHJtsTH-FqYJ9DysaVQ';
  
 export const createUsera=async(data:any)=>{
     try {
-        const resoponse = await axios.post(`${BaseUrl}User/create`,data)
+        const resoponse = await axios.post(`${BaseURl}User/create`,data)
         return resoponse
     } catch (error) {
       console.error(error)
@@ -17,15 +16,15 @@ export const createUsera=async(data:any)=>{
 
 
 export const getAlluser=async(data:any)=>{
-  const {SelectedRole,modeid}=data
+  const {currentPage,modeid}=data
    const option={
     headers: {
        
         'x-access-token': token
       }
-   } 
+   }
     try {
-        const resoponse = await axios.get(`${BaseUrl}User/getall/?modeId=${modeid}&roleId=${SelectedRole}&page_no=1&page_size=100`,option)
+        const resoponse = await axios.get(`${BaseURl}User/getall/${modeid}?page_no=$1&page_size=100`,option)
         return resoponse
     } catch (error) {
       console.error(error) 
@@ -41,7 +40,7 @@ export const getbyiduser=async(data:any)=>{
       }
    }
     try {
-        const resoponse = await axios.get(`${BaseUrl}User/getById/${data}`,option)
+        const resoponse = await axios.get(`${BaseURl}User/getById/${data}`,option)
         return resoponse
     } catch (error) {
       console.error(error) 
@@ -57,7 +56,7 @@ export const deleteUser=async(id:any)=>{
        }
     }
      try {
-         const resoponse = await axios.delete(`${BaseUrl}User/remove/${id}`,option)
+         const resoponse = await axios.delete(`${BaseURl}User/remove/${id}`,option)
          return resoponse
      } catch (error) {
        console.error(error) 
@@ -73,11 +72,11 @@ export const deleteUser=async(id:any)=>{
       'x-access-token':
         token,
     },
-    body: JSON.stringify({is_activated:status}),
+    body: JSON.stringify({status}),
   };
   try {
     const response:any = await fetch(
-      `${BaseUrl}User/update/${editId}`,
+      `${BaseURl}User/update/${editId}`,
       options
     );
     return response.data; // Fixed the variable name here
@@ -92,14 +91,14 @@ export const deleteUser=async(id:any)=>{
       method:'PUT',
       headers: {
         'content-type':'application/json',
-        'x-access-token': 
+        'x-access-token':
           token,
       },
       body: JSON.stringify(values),
     };
     try {
       const response:any = await fetch(
-        `${BaseUrl}User/update/${editId}`,
+        `${BaseURl}User/update/${editId}`,
         options
       );
       return response.data; // Fixed the variable name here
@@ -118,7 +117,7 @@ export const searchUser = async (name: any) => {
 
   try {
     const response = await fetch(
-      `${BaseUrl}User/filter?name=${name}`,
+      `${BaseURl}User/filter?name=${name}`,
       options
     );
 
@@ -147,7 +146,7 @@ export const searchUserbyAge = async (data:any) => {
 
   try {
     const response = await fetch(
-      `${BaseUrl}User/filter?gender=${gender}&minAge=${minAge}&maxAge=${maxAge}`,
+      `${BaseURl}User/filter?gender=${gender}&minAge=${minAge}&maxAge=${maxAge}`,
       options
     );
 
@@ -173,7 +172,7 @@ export const sortUser =async(sort:any)=>{
 
   try {
     const response = await fetch(
-      `${BaseUrl}User/sort?sort_by_name=${sort}`,
+      `${BaseURl}User/sort?sort_by_name=${sort}`,
       options
     );
     const responseData = await response.json();
@@ -206,7 +205,7 @@ export const createProfile = async (data:any) => {
   };
 
   try {
-    const response = await fetch(`${BaseUrl}User/uploadMainProfile/${data.imageid}`, options);
+    const response = await fetch(`${BaseURl}User/uploadMainProfile/${data.imageid}`, options);
     return response;
   } catch (error) {
     console.error(error);
@@ -233,7 +232,7 @@ export const uploadGalleryImage = async (data:any) => {
   };
 
   try {
-    const response = await fetch(`${BaseUrl}User/uploadProfile/${data.id}`, options);
+    const response = await fetch(`${BaseURl}User/uploadProfile/${data.id}`, options);
     return response;
   } catch (error) {
     console.error(error);
@@ -260,13 +259,10 @@ export const RemoveImageintoGallery = async (data:any) => {
   
 
   try {
-    const response = await fetch(`${BaseUrl}User/${id}/remove-avatar/${item}`, options);
+    const response = await fetch(`${BaseURl}User/${id}/remove-avatar/${item}`, options);
     return response;
   } catch (error) {
     console.error(error);
     throw error;
   }
 };
-
-
-

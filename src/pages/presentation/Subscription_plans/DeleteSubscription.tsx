@@ -24,9 +24,9 @@ import Button from '../../../components/bootstrap/Button';
 import Label from '../../../components/bootstrap/forms/Label';
 import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
 import { fetchUser, fetchdeleteUser } from '../../../redux/Slice/UserManagement_slice';
-import { fetchdeleteSubscriptionPlan, getallSubscriptionPlan } from '../../../redux/Slice/SubscriptionPlans_Slice';
+import { fetchdeleteSubscription, getallSubscription } from '../../../redux/Slice/SubscriptionPlans_Slice';
 import { deleteFaqSlice, getallFaqSlice } from '../../../redux/Slice/FaqSlice';
-// import { deleteSubscriptionSlice, getAllSubscription } from '../../../redux/Slice/SubscriptionSlice';
+import { deleteSubscriptionSlice, getAllSubscription } from '../../../redux/Slice/SubscriptionSlice';
 // import PAYMENTS from '../../../../common/data/enumPaymentMethod';
 interface ICustomerEditModalProps {
 	id: string;
@@ -48,13 +48,13 @@ const  DeleteInterset: FC<ICustomerEditModalProps> = ({ id, isOpen,deleteId, set
    const handleDeleteClick = () => {
     setIsOpen(false);
 	try {
-		dispatch(fetchdeleteSubscriptionPlan(deleteId) as any);
+		dispatch(deleteSubscriptionSlice(deleteId) as any);
 
 			
 		}catch (error) {
 			
 		}finally{
-			dispatch(getallSubscriptionPlan(iddd)as any)
+			dispatch(getAllSubscription(iddd)as any)
 			console.log("sdf")
 		}
 };

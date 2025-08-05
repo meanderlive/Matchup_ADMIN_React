@@ -143,7 +143,7 @@ const Customer = () => {
 				<div className='pt-3 pb-5 d-flex align-items-center'>
 
 					<div className='col-10'>
-						<span className='display-4 fw-bold me-3 ' >{dataaaa?.fullname || 'John'}</span>
+						<span className='display-4 fw-bold me-3 ' >{dataaaa?.name || 'John'}</span>
 
 						<span className='border border-success border-2 text-success fw-bold px-3  rounded '>
 							Admin

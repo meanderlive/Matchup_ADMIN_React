@@ -110,32 +110,25 @@ const headers: RouteProps[] = [
 		path: dashboardPagesMenu.dashboard.path,
 		element: null
 	},
-
 	{
-		path:dashboardPagesMenu.Roles.path,
+		path:dashboardPagesMenu.support_help_desk.path,
 		element:null
-	},
-
-	// {
-	// 	path:dashboardPagesMenu.support_help_desk.path,
-	// 	element:null
-	// },
-	{
+	},{
 		path:`/admin-profile/:id`,
 		element:null
 	},
-	// {
-	// 	path:dashboardPagesMenu.compliance_and_legal.path,
-	// 	element:null
-	// },
-	// {
-	// 	path:dashboardPagesMenu.content_management.subMenu.media_library_management.path,
-	// 	element:null
-	// },
-	// {
-	// 	path: dashboardPagesMenu.user_management.subMenu.Interest.path,
-	// 	element:null
-	// },
+	{
+		path:dashboardPagesMenu.compliance_and_legal.path,
+		element:null
+	},
+	{
+		path:dashboardPagesMenu.content_management.subMenu.media_library_management.path,
+		element:null
+	},
+	{
+		path: dashboardPagesMenu.user_management.subMenu.Interest.path,
+		element:null
+	},
 	{
 		path:dashboardPagesMenu.modes.path,
 		element:null
@@ -144,51 +137,50 @@ const headers: RouteProps[] = [
 		path:`/Owner_management/view/:id`,
 		element:null
 	},
-	// {
-	// 	path: dashboardPagesMenu.financial_management.subMenu.financial_reporting.path,
-	// 	element: null,
-	// },
-	// {
-	// 	path:dashboardPagesMenu.content_management.subMenu.blog_articles_publishing.path,
-	// 	element: null
-	// },
-	// {
-	// 	path:dashboardPagesMenu.content_management.subMenu.community_guidelines_enforcement.path,
-	// 	element:null
-	// },
-	// {
-	// 	path:dashboardPagesMenu.content_management.subMenu.faq_management.path,
-	// 	element:null
-	// },
-	// {
-	// 	path: dashboardPagesMenu.financial_management.subMenu.payment_history_invoicing.path,
-	// 	element: null,
-	// },
-	// {
-	// 	path: dashboardPagesMenu.user_management.subMenu.Owner_management.path,
-	// 	element:null
-	// },
-	// {
-	// 	path: dashboardPagesMenu.Matchmaking_Tools.subMenu.Search_Filter_Customization.path,
-	// 	element:null
-	// },
-	// {
-	// 	path: dashboardPagesMenu.Matchmaking_Tools.subMenu.compatibility_quizzes.path,
-	// 	element:null
-	// },
-	// {
-	// 	path: dashboardPagesMenu.financial_management.subMenu.subscription_plans.path,
-	// 	element:null
-	// },
+	{
+		path: dashboardPagesMenu.financial_management.subMenu.financial_reporting.path,
+		element: null,
+	},
+	{
+		path:dashboardPagesMenu.content_management.subMenu.blog_articles_publishing.path,
+		element: null
+	},
+	{
+		path:dashboardPagesMenu.content_management.subMenu.community_guidelines_enforcement.path,
+		element:null
+	},
+	{
+		path:dashboardPagesMenu.content_management.subMenu.faq_management.path,
+		element:null
+	},
+	{
+		path: dashboardPagesMenu.financial_management.subMenu.payment_history_invoicing.path,
+		element: null,
+	},
+	{
+		path: dashboardPagesMenu.user_management.subMenu.Owner_management.path,
+		element:null
+	},
+	{
+		path: dashboardPagesMenu.Matchmaking_Tools.subMenu.Search_Filter_Customization.path,
+		element:null
+	},
+	{
+		path: dashboardPagesMenu.Matchmaking_Tools.subMenu.compatibility_quizzes.path,
+		element:null
+	},
+	{
+		path: dashboardPagesMenu.financial_management.subMenu.subscription_plans.path,
+		element:null
+	},
 	// {
 	// 	path: dashboardPagesMenu.summary.path,
 	// 	element: <SummaryHeader />,
 	// },
-	// {
-	// 	path: dashboardPagesMenu.management.subMenu.user_management.path,
-	// 	element:null
-	// },
-
+	{
+		path: dashboardPagesMenu.user_management.subMenu.profile_management.path,
+		element:null
+	},
 	{
 		path: demoPagesMenu.gridPages.subMenu.gridBoxed.path,
 		element: <ProductsHeader />,

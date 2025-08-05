@@ -2,23 +2,10 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import useDarkMode from '../../../hooks/useDarkMode';
 import Footer from '../../../layout/Footer/Footer';
-import { useDispatch, useSelector } from 'react-redux';
-import { getbtIDmode } from '../../../redux/Slice/Modes_Slice';
 
 const DefaultFooter = () => {
 	const { darkModeStatus } = useDarkMode();
 	const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-	const userLogin =JSON.parse(localStorage.getItem("login") as any)
-	const RoleData =JSON.parse(localStorage.getItem("RoleData") as any)
-
-const store:any =useSelector((i)=>i)
-const modeData = store?.mode?.mode[0] || {}
- 
-const login_Admin_Mode= userLogin?.mode
-	const dispatch= useDispatch();
-	useEffect(()=>{
-		dispatch(getbtIDmode({id:login_Admin_Mode})as any)
-	},[dispatch,login_Admin_Mode])
 
 	useEffect(() => {
 	  const intervalId = setInterval(() => {
@@ -43,7 +30,7 @@ const login_Admin_Mode= userLogin?.mode
 								'link-dark': !darkModeStatus,
 								'link-light': darkModeStatus,
 							})}>
-							<small className='fw-bold'>{modeData?.display_name}-<span className='fw-lighter'>{RoleData?.name}</span> </small>
+							<small className='fw-bold'>Facit Theme</small>
 						</a>
 					</div>
 				</div>

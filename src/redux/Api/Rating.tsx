@@ -16,7 +16,7 @@ export const createRating=async(data:any)=>{
 export const getAllRating=async(modeId:any)=>{
    
     try {
-        const resoponse = await axios.get(`https://datingapi.meander.software/rating/getall/${modeId}?page_no=1&page_size=999`)
+        const resoponse = await axios.get(`https://datingapi.meander.software/rating/getall/${modeId}?page_no=1&page_size=100`)
         return resoponse
     } catch (error) {
       console.log(error) 
